@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/1 Basics/2 Building a graph.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
