@@ -1,19 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
     public Transform pointPrefab;
-
+    public Transform[] points;
+    [Range(10, 100)] public int resolution = 10;
     private void Awake()
     {
+        float step = 2f / resolution;
+        Vector3 scale = Vector3.one * step;
+        Vector3 position;
+        position.y = 0;
+        position.z = 0f;
+        points = new Transform[resolution];
+        for (int i = 0; i < points.Length; i++)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                Transform point = Instantiate(pointPrefab);
-                point.localPosition = Vector3.right * i;
-            }
+            Transform point = Instantiate(pointPrefab, transform, false);
+            position.x = (i + 0.5f) * step - 1f;
+            point.localPosition = position;
+            point.localScale = scale;
+            points[i] = point;
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            Transform point = points[i];
+            Vector3 position = point.localPosition;
+            position.y = Mathf.Sin(Mathf.PI * (position.x + Time.time));
+            point.localPosition = position;
         }
     }
 }
