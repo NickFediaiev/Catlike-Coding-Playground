@@ -154,7 +154,7 @@ MonoBehaviour:
     type: 3}
   points: []
   resolution: 100
-  function: 4
+  function: 7
 --- !u!4 &376573060
 Transform:
   m_ObjectHideFlags: 0
